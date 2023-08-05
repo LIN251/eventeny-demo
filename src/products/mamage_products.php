@@ -1,7 +1,5 @@
 <?php
 $user_id = $_SESSION["user_id"];
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 // Fetch all products for current user from the 'product' table
 $sql = "SELECT * FROM products WHERE user_id = '$user_id'";
 $result = $conn->query($sql);
@@ -31,6 +29,5 @@ if ($result->num_rows > 0) {
     echo '<p>No products found.</p>';
 }
 
-// Close the database connection
-$conn->close();
+
 ?>

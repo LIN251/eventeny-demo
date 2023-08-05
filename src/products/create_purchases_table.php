@@ -11,9 +11,6 @@ $sql = "CREATE TABLE IF NOT EXISTS purchases (
     postcode VARCHAR(20) NOT NULL,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    card_number VARCHAR(20) NOT NULL,
-    expiry VARCHAR(10) NOT NULL,
-    cvv VARCHAR(10) NOT NULL,
     shipped TINYINT(1) NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES products(product_id)

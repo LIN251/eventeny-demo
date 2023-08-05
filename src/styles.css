@@ -6,7 +6,9 @@ body {
 
 
 h1 {
-    text-align: center;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #10bab4;
 }
 
 /* login and register css */
@@ -45,13 +47,13 @@ h1 {
 
 /* CSS for the login button */
 #login input[type="submit"] {
-    background-color: #2196F3;
+    background-color: #10bab4;
     color: white;
     cursor: pointer;
 }
 
 #login input[type="submit"]:hover {
-    background-color: #0d8add;
+    background-color: #0c928e;
 }
 
 /* CSS for the Register button */
@@ -60,13 +62,13 @@ h1 {
 }
 
 #register input[type="submit"] {
-    background-color: #2196F3;
+    background-color: #10bab4;
     color: white;
     cursor: pointer;
 }
 
 #register input[type="submit"]:hover {
-    background-color: #0d8add;
+    background-color: #0c928e;
 }
 
 /* Style the tab */
@@ -95,68 +97,123 @@ h1 {
 
 /* CSS for the product container */
 .product {
-    display: flex;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  margin-bottom: 20px;
+}
   
-  /* CSS for the product image container */
-  .product-image {
-    flex: 1;
-    padding-right: 20px;
-  }
-  
-  /* CSS for the product image */
-  .product-image img {
-    max-width: 100%;
-    height: auto;
-  }
+/* CSS for the product image container */
+.product-image {
+  flex: 1;
+  padding-right: 20px;
+}
 
-  /* CSS for the product details container */
+/* CSS for the product image */
+.product-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* CSS for the product details container */
 .product-details {
-    flex: 2;
-  }
-  
-  /* CSS for product details text */
-  .product-details h3 {
-    font-size: 18px;
-    margin: 0;
-    margin-bottom: 10px;
-  }
-  
-  .product-details p {
-    margin: 0;
-    margin-bottom: 5px;
-  }
-  
-  /* CSS for the purchase button */
-  .product-details form {
-    margin-top: 10px;
-  }
-  
-  .product-details input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .product-details input[type="submit"]:hover {
-    background-color: #45a049;
-  }
+  flex: 2;
+}
 
-  .product-details input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+/* CSS for product details text */
+.product-details h3 {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+/* CSS for the purchase button */
+.product-details form {
+  margin-top: 10px;
+}
+
+.product-details input[type="submit"] {
+  background-color: #10bab4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.product-details input[type="submit"]:hover {
+  background-color: #10bab4;
+}
+
+.product-details input[type="submit"] {
+  background-color: #10bab4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.product-details input[type="submit"]:hover {
+  background-color: #0c928e;
+}
+
+
+  /* CSS for Purchase product page*/
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #10bab4;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input[type="submit"] {
+  width: 100%;
+
+    background-color: #10bab4;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    
     border: none;
     border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .product-details input[type="submit"]:hover {
-    background-color: #45a049;
-  }
+    transition: background-color 0.3s ease;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #0c928e;
+}

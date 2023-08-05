@@ -1,8 +1,6 @@
 <?php
 session_start();
 require_once "../util/db_connection.php";
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 function login($username, $password,$conn){
      // Validate user credentials

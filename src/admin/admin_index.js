@@ -86,21 +86,15 @@ function deleteProduct(id) {
   }
 }
 
-
-// function deleteProduct(id){
-//   if (confirm("Are you sure you want to delete this product?")) {
-//     $.ajax({
-//         type: "POST",
-//         url: "delete_product.php",
-//         data: { product_id: productId },
-//         success: function(response) {
-//             // Refresh the page to update the product list after deletion
-//             location.reload();
-//         },
-//         error: function() {
-//             alert("An error occurred while deleting the product.");
-//         }
-//     });
-//   }
-
-// }
+function handleCheckboxClick(checkbox, purchase_id) {
+  if (confirm("Please confirm to ship this product. You cannot cancel this action.")) {
+    $.post(`../products/ship_product.php`, { purchase_id: purchase_id }, )
+    .fail(function() {
+      alert("An error occurred while update the product.");
+    });
+    checkbox.checked = true;
+    checkbox.disabled = true;
+  }else{
+    checkbox.checked = false;
+  }
+}

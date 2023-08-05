@@ -67,8 +67,10 @@ ini_set('display_errors', 1);
     <!-- Sold products tab -->
     <div id="sold" class="tabcontent">
         <h1>Sold Products</h1>
+        <?php 
+            include "../products/sold_products.php"; 
+        ?>
     </div>
-
 
 </body>
 </html>
