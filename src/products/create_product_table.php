@@ -1,10 +1,7 @@
 <?php
-
+require_once "../util/db_connection.php";
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-echo "Hello World!2<br>";
-require_once "../util/db_connection.php";
-
 // Create the 'products' table if it doesn't exist
 $sql = "CREATE TABLE IF NOT EXISTS products (
     product_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -15,8 +12,10 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     available INT(11) NOT NULL DEFAULT 0,
     sold INT(11) NOT NULL DEFAULT 0,
     returns_policy TEXT,
+    user_id INT(11) UNSIGNED NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
 )";
 if ($conn->query($sql) === true) {
     echo "Table 'products' created successfully or already exists.<br>";

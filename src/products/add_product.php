@@ -1,4 +1,5 @@
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Connect to the database
     require_once "../util/db_connection.php";
@@ -10,17 +11,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $image = $_POST["image"];
     $available = $_POST["available"];
     $returns_policy = $_POST["returns_policy"];
+    $user_id = $_SESSION["user_id"];
 
     // Insert the new product into the database
-    $sql = "INSERT INTO product (name, price, description, image, available, returns_policy) 
-            VALUES ('$name', '$price', '$description', '$image', '$available', '$returns_policy')";
+    $sql = "INSERT INTO products (name, price, description, image, available, returns_policy, user_id) 
+            VALUES ('$name', '$price', '$description', '$image', '$available', '$returns_policy', '$user_id')";
     if ($conn->query($sql) === TRUE) {
         echo "New product added successfully!" . "<br>";
+        header("Location: ../admin/admin_index.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
     // Close the MySQL connection
     $conn->close();
+
+    // Redirect to the admin_index page
 }
 ?>

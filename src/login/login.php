@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Login successful, set session variable
             $_SESSION["user_id"] = $user["user_id"];
             $_SESSION["username"] = $user["username"];
-            header("Location: ../admin/manage_products.php");
+            header("Location: ../admin/admin_index.php");
             exit;
         } else {
             echo "Invalid password";
