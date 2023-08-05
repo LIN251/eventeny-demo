@@ -10,12 +10,12 @@
 <body>
 
 <h1>Marketplace</h1>
-<button class="tablink" onclick="openTab('products')" id="defaultOpen">All on sale products</button>
-<button class="tablink" onclick="openTab('login')">Login</button>
+<button class="tablink" onclick="openTab('products')" id="defaultOpen">All Products</button>
+<button class="tablink" id= "guestLogin" onclick="openTab('login')">Login</button>
 <button class="tablink" onclick="openTab('register')">Register</button>
 
 <div id="products" class="tabcontent">
-  <h1>All Products</h1>
+  <h1>All Products On Sale</h1>
   <?php 
     // Include the database connection code
     require_once "util/db_connection.php";
@@ -47,7 +47,7 @@
         <input type="text" name="username" required>
         <label for="password">Password:</label>
         <input type="password" name="password" required>
-        <input type="submit" value="Register">
+        <input type="submit" value="Register" >
     </form>
 </div>
 

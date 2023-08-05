@@ -6,6 +6,9 @@ function redirectToLogin() {
     exit;
 }
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Include the database connection code
@@ -31,12 +34,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             // Insert the new user into the database
             include "../users/add_user.php";
+ 
+            // Redirect to the index page and change to the login tab
+            echo "<script>
+                    window.location.href = '../index.php#login';
+                    // let guestLoginButton = document.getElementById('guestLogin');
+                    // if (guestLoginButton) {
+                    //     guestLoginButton.click();
+                    // }
+                  </script>";
+            exit;
         }
     }
 
     // Close the database connection
     $conn->close();
 }
+
 ?>
-
-

@@ -1,7 +1,6 @@
 <?php
 require_once "../util/db_connection.php";
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 // Create the 'products' table if it doesn't exist
 $sql = "CREATE TABLE IF NOT EXISTS products (
     product_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
