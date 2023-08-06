@@ -5,7 +5,7 @@ $sql = "SELECT * FROM products WHERE user_id = '$user_id' and archive = '0'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    echo '<table class="product-table">';
+    echo '<table class="product-table table">';
     echo '<tr><th>Name</th><th>Image</th><th>Description</th><th>Price</th><th>Available</th><th>Return Policy</th><th>Sold</th><th>Shipped</th><th>Edit</th><th>Archive</th><th>Delete</th></tr>';
     while ($row = $result->fetch_assoc()) {
         echo '<tr data-id="' . $row["product_id"] . '">';

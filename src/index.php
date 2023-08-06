@@ -18,12 +18,16 @@
     include "util/db_check.php"; 
 ?>
 <div id="products" class="tabcontent">
-  <h1>All Products On Sale</h1>
-  <?php 
-    // Include the database connection code
-    require_once "util/db_connection.php";
-    include "products/show_products.php"; 
-  ?>
+  <div class="show-products-container">
+        <h1 class="form-title">All Products On Sale</h1>
+        <div class="products-container">
+            <?php 
+                // Include the database connection code
+                require_once "util/db_connection.php";
+                include "products/show_products.php"; 
+            ?>
+        </div>
+    </div>
 </div>
 
 <div id="login" class="tabcontent">

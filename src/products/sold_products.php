@@ -8,7 +8,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    echo '<table class="product-table">';
+    echo '<table class="product-table table">';
     echo '<tr><th>Product Name</th><th>Price</th><th>Description</th><th>Address</th><th>State</th><th>Postcode</th><th>Country</th><th>Name</th><th>Email</th><th>Purchased At</th><th>Shipment</th></tr>';
     while ($row = $result->fetch_assoc()) {
         // Check if the product is sold

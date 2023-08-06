@@ -11,6 +11,19 @@ h1, h2{
 }
 
 
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+.table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Style the tab */
 .tablink {
     background-color: #555;

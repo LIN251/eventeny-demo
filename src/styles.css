@@ -4,14 +4,13 @@ body {
     padding: 0;
 }
 
-
 h1 {
   text-align: center;
   margin-bottom: 20px;
   color: #10bab4;
 }
 
-/* login and register css */
+/* Login and Register css */
 /* CSS for the login container */
 #login, #register {
     width: 300px;
@@ -71,7 +70,7 @@ h1 {
     background-color: #0c928e;
 }
 
-/* Style the tab */
+/* Style the Tabs */
 .tablink {
   background-color: #555;
   color: white;
@@ -95,44 +94,62 @@ h1 {
 }
 
 
-/* CSS for the product container */
+/* CSS for show product container */
+.show-products-container {
+  width: 60%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
 .product {
   display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   margin-bottom: 20px;
-}
-  
-/* CSS for the product image container */
-.product-image {
-  flex: 1;
-  padding-right: 20px;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 15px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* CSS for the product image */
-.product-image img {
-  max-width: 100%;
-  height: auto;
-}
 
-/* CSS for the product details container */
 .product-details {
-  flex: 2;
+    flex: 2;
 }
 
-/* CSS for product details text */
 .product-details h3 {
   font-size: 18px;
   margin: 0;
   margin-bottom: 10px;
+  margin-top: 8px;
+  color: #14ada8;
 }
 
 .product-details p {
-  margin: 0;
-  margin-bottom: 5px;
+    margin: 5px 0;
 }
 
-/* CSS for the purchase button */
+.product-image {
+  flex: 1;
+  display: flex;
+
+  justify-content: center;
+
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f1f1f1; /* Optional: Add a background color to the container */
+}
+
+.product-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .product-details form {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .product-details input[type="submit"] {
@@ -149,19 +166,9 @@ h1 {
   background-color: #10bab4;
 }
 
-.product-details input[type="submit"] {
-  background-color: #10bab4;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
 
-.product-details input[type="submit"]:hover {
-  background-color: #0c928e;
-}
+
+
 
 
   /* CSS for Purchase product page */

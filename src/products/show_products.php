@@ -7,17 +7,16 @@
     while ($row = $result->fetch_assoc()) {
         echo '<div class="product" id="'. $row["product_id"] . '">';
         echo '<div class="product-image">';
-
         $imageURL = "https://via.placeholder.com/140";
         if(!empty($row["image"])){
           $imageURL  =  $row["image"];
         }
-        echo '<img src="' . $imageURL . '" alt="Product Image" style="width: 140px;">';
+        echo '<img src="' . $imageURL . '" alt="Product Image">';
         echo '</div>';
         echo '<div class="product-details">';
         echo '<h3> Product: ' . $row["name"] . '</h3>';
         echo '<p>Price: $' . $row["price"] . '</p>';
-        echo '<p>Description: ' . $row["description"] . '</p>';
+        echo '<p >Description: ' . $row["description"] . '</p>';
         echo '<p>Available: ' . $row["available"] . '</p>';
         echo '<p>Return Policy: ' . $row["returns_policy"] . '</p>';
 

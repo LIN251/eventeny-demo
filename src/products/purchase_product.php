@@ -25,12 +25,13 @@
         }
 
 
-        function validateForm() {
+        function validateForm(available) {
             let countInput = document.getElementById("count");
             let count = parseInt(countInput.value);
+         
             // Check if the count is a valid positive integer
-            if (count <= 0 || !Number.isInteger(count)) {
-                alert("Invalid count. Please enter a valid positive integer.");
+            if (count <= 0 || !Number.isInteger(count) || count > available) {
+                alert(`Invalid count. Only ${available} available.`);
                 return false; 
             }
             return true;
@@ -43,7 +44,7 @@
 <body>
     <div class="form-container">
         <h1 class="form-title">Shopping Cart</h1>
-        <form action="process_purchase.php" method="post" onsubmit="return validateForm()">
+        <form action="process_purchase.php" method="post" onsubmit="return validateForm(<?php echo $_POST['available']; ?>)">
             <h3>Product Information</h3>
             <div class="form-group">
                 <?php
