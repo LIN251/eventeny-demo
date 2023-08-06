@@ -1,5 +1,4 @@
 <?php
-require_once "../util/db_connection.php";
 
 // Create the 'products' table if it doesn't exist
 $sql = "CREATE TABLE IF NOT EXISTS products (
@@ -18,13 +17,5 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 )";
-if ($conn->query($sql) === true) {
-    echo "Table 'products' created successfully or already exists.<br>";
-} else {
-    echo "Error creating table: " . $conn->error . "<br>";
-}
-
-// Close the connection
-$conn->close();
-
+$conn->query($sql);
 ?>

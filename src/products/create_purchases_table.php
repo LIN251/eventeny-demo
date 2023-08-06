@@ -1,6 +1,4 @@
 <?php
-require_once "../util/db_connection.php";
-
 // Create the 'purchases' table if it doesn't exist
 $sql = "CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -14,13 +12,5 @@ $sql = "CREATE TABLE IF NOT EXISTS purchases (
     shipped TINYINT(1) NOT NULL DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
-if ($conn->query($sql) === true) {
-    echo "Table 'purchases' created successfully or already exists.<br>";
-} else {
-    echo "Error creating table: " . $conn->error . "<br>";
-}
-
-// Close the connection
-$conn->close();
-
+$conn->query($sql);
 ?>

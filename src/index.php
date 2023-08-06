@@ -14,6 +14,9 @@
 <button class="tablink" id= "guestLogin" onclick="openTab('login')">Login</button>
 <button class="tablink" onclick="openTab('register')">Register</button>
 
+<?php 
+    include "util/db_check.php"; 
+?>
 <div id="products" class="tabcontent">
   <h1>All Products On Sale</h1>
   <?php 
