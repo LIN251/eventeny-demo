@@ -41,8 +41,8 @@ function saveProduct(id) {
           description: tr.find('.description').find('input').val(),
           returns_policy: tr.find('.return_policy').find('input').val()
       };
-      // Check if any required fields are empty
-      console.log(data)
+
+     
       if (!data.name || !data.price || !data.available || !data.description || !data.returns_policy) {
         alert("Error: Required field cannot be empty");
         return;
@@ -87,8 +87,22 @@ function deleteProduct(id) {
   }
 }
 
-function archiveProduct(id){
-
+function processArchive(id, archive){
+  var confirm_message = "";
+  if (archive){
+    confirm_message = confirm("Are you sure you want to archive this product?");
+  }else{
+    confirm_message = confirm("Are you sure you want to move this product back to?");
+  }
+  if (confirm_message) {
+    $.post(`../products/process_archive.php`, { product_id: id , archive : archive}, function(response) {
+      const tr = $(`tr[data-id="${id}"]`);
+      tr.remove();
+    })
+    .fail(function() {
+      alert("An error occurred while archiving the product.");
+    });
+  }
 }
 
 

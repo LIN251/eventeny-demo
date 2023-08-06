@@ -1,6 +1,6 @@
 <?php
   // Fetch all products from the 'products' table
-  $sql = "SELECT * FROM products";
+  $sql = "SELECT * FROM products WHERE archive = '0'";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {

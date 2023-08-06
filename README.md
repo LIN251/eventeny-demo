@@ -9,3 +9,12 @@ image 支持多个image
 1. create user table
 2. products
 3. purchases
+
+
+
+ remove all “->query”
+ change to 
+         $deleteStmt = $conn->prepare("DELETE FROM products WHERE product_id = ? ");       
+        $deleteStmt->bind_param("i", $product_id);
+        $deleteStmt->execute();
+        $deleteStmt->close();

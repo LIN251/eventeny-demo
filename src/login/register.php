@@ -1,10 +1,14 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
-// var_dump($_REQUEST);
-// var_dump($_POST);
-// var_dump($_GET);
-// Function to redirect to the login page
+function InvalidUser(){
+    echo '<link rel="stylesheet" href="../styles.css">';
+    echo '<div class="purchase-success">';
+    echo "<h1>User exists!</h1>";
+    echo "<br>";
+    echo "Username already exists. Please choose a different username.";
+    echo "<br>";
+    echo '<a href="../index.php" class="back-btn">Back to Home</a>';
+    echo '</div>';
+}
 function login($username, $password, $conn){
     // Validate user credentials
     $sql = "SELECT * FROM users WHERE username = ?";
@@ -13,21 +17,16 @@ function login($username, $password, $conn){
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-        if (password_verify($password, $user["password"])) {
-            session_start();
-            // Login successful, set session variable
-            $_SESSION["user_id"] = $user["user_id"];
-            $_SESSION["username"] = $user["username"];
-            header("Location: ../admin/admin_index.php");
-            exit;
-        } else {
-            echo "Invalid password";
-        }
-    } else {
-        echo "User not found";
-    }
+    $user = $result->fetch_assoc();
+    if (password_verify($password, $user["password"])) {
+        session_start();
+        // Login successful, set session variable
+        $_SESSION["user_id"] = $user["user_id"];
+        $_SESSION["username"] = $user["username"];
+        header("Location: ../admin/admin_index.php");
+        exit;
+    } 
+ 
 }
 
 
@@ -52,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            echo "Username already exists. Please choose a different username.";
+            InvalidUser();
         } else {
             // Insert the new user into the database
             include "../users/add_user.php";
