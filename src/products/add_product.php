@@ -25,7 +25,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Close the MySQL connection
     $conn->close();
-
-    // Redirect to the admin_index page
 }
 ?>

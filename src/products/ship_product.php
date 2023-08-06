@@ -18,6 +18,5 @@
     //close database connection
     $conn->close();
 
-    header("Location: ../admin/admin_index.php");
-    exit;
+
 ?>

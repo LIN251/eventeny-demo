@@ -63,14 +63,14 @@ function saveProduct(id) {
             const input = $(this).find('input');
             const value = input.val();
             const isPrice = $(this).hasClass('price');
-          
             if (isPrice && value && !value.startsWith('$')) {
               input.val('$' + value);
             }
-          
             $(this).html(input.val());
           });
           tr.find('.edit-btn').text('Edit').attr('onclick', `editProduct(${id})`);
+      }).done(function() {
+        location.reload();
       });
 }
 
@@ -80,6 +80,8 @@ function deleteProduct(id) {
     $.post(`../products/delete_product.php`, { product_id: id }, function(response) {
       const tr = $(`tr[data-id="${id}"]`);
       tr.remove();
+    }).done(function() {
+      location.reload();
     })
     .fail(function() {
       alert("An error occurred while deleting the product.");
@@ -98,6 +100,8 @@ function processArchive(id, archive){
     $.post(`../products/process_archive.php`, { product_id: id , archive : archive}, function(response) {
       const tr = $(`tr[data-id="${id}"]`);
       tr.remove();
+    }).done(function() {
+      location.reload();
     })
     .fail(function() {
       alert("An error occurred while archiving the product.");
@@ -108,13 +112,16 @@ function processArchive(id, archive){
 
 function handleCheckboxClick(checkbox, purchase_id) {
   if (confirm("Please confirm to ship this product. You cannot cancel this action.")) {
-    $.post(`../products/ship_product.php`, { purchase_id: purchase_id }, )
-    .fail(function() {
-      alert("An error occurred while update the product.");
-    });
-    checkbox.checked = true;
-    checkbox.disabled = true;
-  }else{
+    $.post(`../products/ship_product.php`, { purchase_id: purchase_id })
+      .done(function() {
+        checkbox.checked = true;
+        checkbox.disabled = true;
+        location.reload();
+      })
+      .fail(function() {
+        alert("An error occurred while updating the product.");
+      });
+  } else {
     checkbox.checked = false;
   }
 }

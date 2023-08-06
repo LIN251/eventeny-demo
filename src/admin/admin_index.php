@@ -25,7 +25,7 @@ ini_set('display_errors', 1);
 <body>
     <h1>Welcome, <?php echo $_SESSION["username"]; ?>!</h1>
     <button class="tablink" onclick="openTab('manage')" id="defaultOpen" >Manage products</button>
-    <button class="tablink" onclick="openTab('sold')" >Sold Products</button>
+    <button class="tablink" onclick="openTab('sold')" id="soldTab" >Sold Products</button>
     <button class="tablink" onclick="openTab('archive')" >Archived Templates</button>
     <button class="tablink" onclick="logout()">Log Out</button>
 

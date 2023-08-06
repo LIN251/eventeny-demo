@@ -181,6 +181,11 @@ h1 {
     color: #10bab4;
 }
 
+h3 {
+  text-align: center;
+  margin-top: 50px;
+}
+
 .form-group {
     margin-bottom: 20px;
     justify-content: center;
