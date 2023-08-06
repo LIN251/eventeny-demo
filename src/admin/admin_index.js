@@ -38,11 +38,12 @@ function saveProduct(id) {
           name: tr.find('.name').find('input').val(),
           price: tr.find('.price').find('input').val(),
           available: tr.find('.available').find('input').val(),
-          sold: tr.find('.sold').find('input').val(),
+          description: tr.find('.description').find('input').val(),
           returns_policy: tr.find('.return_policy').find('input').val()
       };
       // Check if any required fields are empty
-      if (!data.name || !data.price || !data.available || !data.sold || !data.returns_policy) {
+      console.log(data)
+      if (!data.name || !data.price || !data.available || !data.description || !data.returns_policy) {
         alert("Error: Required field cannot be empty");
         return;
       }
@@ -85,6 +86,11 @@ function deleteProduct(id) {
     });
   }
 }
+
+function archiveProduct(id){
+
+}
+
 
 function handleCheckboxClick(checkbox, purchase_id) {
   if (confirm("Please confirm to ship this product. You cannot cancel this action.")) {

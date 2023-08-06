@@ -10,6 +10,8 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     image VARCHAR(255), 
     available INT(11) NOT NULL DEFAULT 0,
     sold INT(11) NOT NULL DEFAULT 0,
+    shipped INT(11) NOT NULL DEFAULT 0,
+    archive TINYINT(1) NOT NULL DEFAULT 0,
     returns_policy TEXT,
     user_id INT(11) UNSIGNED NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

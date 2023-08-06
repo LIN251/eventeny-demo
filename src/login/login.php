@@ -2,7 +2,7 @@
 session_start();
 require_once "../util/db_connection.php";
 
-function login($username, $password,$conn){
+function login($username, $password, $conn){
      // Validate user credentials
      $sql = "SELECT * FROM users WHERE username = ?";
      $stmt = $conn->prepare($sql);
@@ -29,6 +29,9 @@ function login($username, $password,$conn){
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
+    echo $username;
+    echo $password;
+    echo "hello";
     login($username, $password,$conn);
 }
 

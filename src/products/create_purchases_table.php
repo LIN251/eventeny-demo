@@ -12,8 +12,7 @@ $sql = "CREATE TABLE IF NOT EXISTS purchases (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     shipped TINYINT(1) NOT NULL DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (product_id) REFERENCES products(product_id)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 if ($conn->query($sql) === true) {
     echo "Table 'purchases' created successfully or already exists.<br>";

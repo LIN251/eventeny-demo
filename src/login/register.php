@@ -1,10 +1,35 @@
 <?php
-
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// var_dump($_REQUEST);
+// var_dump($_POST);
+// var_dump($_GET);
 // Function to redirect to the login page
-function redirectToLogin() {
-    header("Location: login.php");
-    exit;
+function login($username, $password, $conn){
+    // Validate user credentials
+    $sql = "SELECT * FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        if (password_verify($password, $user["password"])) {
+            session_start();
+            // Login successful, set session variable
+            $_SESSION["user_id"] = $user["user_id"];
+            $_SESSION["username"] = $user["username"];
+            header("Location: ../admin/admin_index.php");
+            exit;
+        } else {
+            echo "Invalid password";
+        }
+    } else {
+        echo "User not found";
+    }
 }
+
 
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -31,16 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             // Insert the new user into the database
             include "../users/add_user.php";
- 
-            // Redirect to the index page and change to the login tab
-            echo "<script>
-                    window.location.href = '../index.php#login';
-                    // let guestLoginButton = document.getElementById('guestLogin');
-                    // if (guestLoginButton) {
-                    //     guestLoginButton.click();
-                    // }
-                  </script>";
-            exit;
+            login($username,$password,$conn);
         }
     }
 

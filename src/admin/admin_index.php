@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 if (!isset($_SESSION["user_id"])) {
     // Redirect to login if the user is not logged in
@@ -24,12 +26,13 @@ ini_set('display_errors', 1);
     <h1>Welcome, <?php echo $_SESSION["username"]; ?>!</h1>
     <button class="tablink" onclick="openTab('manage')" id="defaultOpen" >Manage products</button>
     <button class="tablink" onclick="openTab('sold')" >Sold Products</button>
+    <button class="tablink" onclick="openTab('archive')" >Archived Templates</button>
     <button class="tablink" onclick="logout()">Log Out</button>
 
 
     <!-- Manage products tab -->
     <div id="manage" class="tabcontent">
-        <h1>Manage products</h1>
+        <h2>Manage products</h2>
       
         <?php 
             // Include the database connection code
@@ -72,5 +75,12 @@ ini_set('display_errors', 1);
         ?>
     </div>
 
+        <!-- Sold products tab -->
+        <div id="archive" class="tabcontent">
+        <h1>Archived Products</h1>
+        <?php 
+            include "../products/archive_products.php"; 
+        ?>
+    </div>
 </body>
 </html>

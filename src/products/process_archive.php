@@ -24,6 +24,7 @@ if ($result->num_rows > 0) {
         echo '<td class="shipped">' . $row["shipped"] . '</td>';
         echo '<td><button class="edit-btn" onclick="editProduct(' . $row["product_id"] . ')">Edit</button></td>';
         echo '<td><button onclick="archiveProduct(' . $row["product_id"] . ')">Archive</button></td>';
+
         echo '<td><button onclick="deleteProduct(' . $row["product_id"] . ')">Delete</button></td>';
         echo '</tr>';
     }
