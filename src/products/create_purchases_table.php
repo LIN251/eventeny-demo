@@ -3,6 +3,7 @@
 $sql = "CREATE TABLE IF NOT EXISTS purchases (
     purchase_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     product_id INT(11) UNSIGNED NOT NULL,
+    seller_id INT(11) UNSIGNED NOT NULL,
     address VARCHAR(255) NOT NULL,
     state VARCHAR(100) NOT NULL,
     country VARCHAR(100) NOT NULL,

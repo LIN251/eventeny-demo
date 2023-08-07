@@ -113,6 +113,7 @@
 
             <input type="hidden" id="available" value="<?php echo $_POST['available']; ?>">
             <input type="hidden" name="product_id" value="<?php echo $_POST['product_id']; ?>">
+            <input type="hidden" name="user_id" value="<?php echo $_POST['user_id']; ?>">
             <div class="form-group">
                 <input type="submit" value="Submit Purchase" class="submit-btn">
             </div>

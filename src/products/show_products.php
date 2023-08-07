@@ -39,6 +39,7 @@
         if ($row["available"] > 0) {
           echo '<form action="./products/purchase_product.php" method="post">';
           echo '<input type="hidden" name="product_id" value="' . $row["product_id"] . '">';
+          echo '<input type="hidden" name="user_id" value="' . $row["user_id"] . '">';
           echo '<input type="hidden" name="available" value="' . $row["available"] . '">';
           echo '<input type="hidden" name="name" value="' . $row["name"] . '">';
           echo '<input type="hidden" name="price" value="' . $row["price"] . '">';

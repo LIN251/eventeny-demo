@@ -1,11 +1,18 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Dotenv\Dotenv;
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+var_dump($_REQUEST);
+var_dump($_POST);
+var_dump($_GET);
 function confirmPurchase($name, $toEmail, $productName, $productPrice, $quantity, $total, $address,$state,$country,$postcode,$conn){
     // Load the environment variables from the .env file
     $dotenv = Dotenv::createImmutable(dirname(dirname(__DIR__)));
     $dotenv->load();
     $emailSender = $_ENV['EMAIL_SENDER'];
+    // Set the timezone to New York
+    date_default_timezone_set('America/New_York');
     $purchaseDate = date("Y-m-d H:i:s");
     // Email content <strong>
     $subject = "Purchase Confirmation";
@@ -18,7 +25,7 @@ function confirmPurchase($name, $toEmail, $productName, $productPrice, $quantity
     $message .= '<tr><td>Price:</td><td>$' . $productPrice . '</td></tr>';
     $message .= '<tr><td>Quantity:</td><td>' . $quantity . '</td></tr>';
     $message .= '<tr><td>Total Cost:</td><td>$' . $total . ' (Without Tax)</td></tr>';
-    $message .= '<tr><td>Purchase Date:</td><td>' . $purchaseDate . '</td></tr>';
+    $message .= '<tr><td>Purchase Date:</td><td>' . $purchaseDate . ' EST</td></tr>';
     $message .= '</table>';
     $message .= '<br><strong>Shipping Address:</strong><br>';
     $message .= '<table>';
@@ -44,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     require_once "../util/db_connection.php";
     // Get the submitted data from the form
     $product_id = $_POST["product_id"];
+    $seller_id = $_POST["user_id"];
     $name = $_POST["name"];
     $email = $_POST["email"];
     $address = $_POST["address"];
@@ -75,8 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Prepare and execute the SQL query to insert the purchase into the database
         for($i=0; $i<$count; $i++){
-            $stmt = $conn->prepare("INSERT INTO purchases (product_id, name, email, address, state, country, postcode) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("issssss", $product_id, $name, $email, $address, $state, $country, $postcode);
+            $stmt = $conn->prepare("INSERT INTO purchases (product_id, seller_id, name, email, address, state, country, postcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iissssss", $product_id, $seller_id, $name, $email, $address, $state, $country, $postcode);
             $stmt->execute();
             $stmt->close();
         }
