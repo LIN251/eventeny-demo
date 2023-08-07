@@ -76,7 +76,7 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 ## Database Schema
 
-![Database Schema](https://github.com/LIN251/eventeny-demo/tree/main/img/DemoDatabaseSchema.png)
+![Database Schema](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/DemoDatabaseSchema.png)
 
 1. **Automatic Table Creation**: The application automatically creates necessary SQL tables (users, products, purchases) if they do not already exist.
 
@@ -89,20 +89,20 @@ This is a simple marketplace website where users can buy and sell products. Belo
 ---
 
 ## Marketplace Image
-![marketplace1](https://github.com/LIN251/eventeny-demo/tree/main/img/marketplace1.jpg)
+![marketplace1](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/marketplace1.jpg)
 
-![Marketplace2](https://github.com/LIN251/eventeny-demo/tree/main/img/marketplace2.jpg)
+![Marketplace2](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/marketplace2.jpg)
 
-![Marketplace3](https://github.com/LIN251/eventeny-demo/tree/main/img/img/marketplace3.jpg)
+![Marketplace3](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/marketplace3.jpg)
 
-![Marketplace4](https://github.com/LIN251/eventeny-demo/tree/main/img/img/marketplace4.jpg)
+![Marketplace4](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/marketplace4.jpg)
 
 ## Admin Image
-![Admin1](https://github.com/LIN251/eventeny-demo/tree/main/img/img/admin1.jpg)
+![Admin1](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin1.jpg)
 
-![Admin2](https://github.com/LIN251/eventeny-demo/tree/main/img/img/admin2.jpg)
+![Admin2](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin2.jpg)
 
-![Admin3](https://github.com/LIN251/eventeny-demo/tree/main/img/img/admin3.jpg)
+![Admin3](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin3.jpg)
 
 
 This README provides a brief overview of the key functionalities of the marketplace website. 
