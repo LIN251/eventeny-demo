@@ -1,12 +1,10 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Dotenv\Dotenv;
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-var_dump($_REQUEST);
-var_dump($_POST);
-var_dump($_GET);
-function confirmPurchase($name, $toEmail, $productName, $productPrice, $quantity, $total, $address,$state,$country,$postcode,$conn){
+
+
+function confirmPurchase($name, $toEmail, $productName, $productPrice, $quantity, $total, $address, $state, $country, $postcode, $conn)
+{
     // Load the environment variables from the .env file
     $dotenv = Dotenv::createImmutable(dirname(dirname(__DIR__)));
     $dotenv->load();
@@ -24,7 +22,7 @@ function confirmPurchase($name, $toEmail, $productName, $productPrice, $quantity
     $message .= '<tr><td>Product Name:</td><td>' . $productName . '</td></tr>';
     $message .= '<tr><td>Price:</td><td>$' . $productPrice . '</td></tr>';
     $message .= '<tr><td>Quantity:</td><td>' . $quantity . '</td></tr>';
-    $message .= '<tr><td>Total Cost:</td><td>$' . $total . ' (Without Tax)</td></tr>';
+    $message .= '<tr><td>Total Cost:</td><td>$' . $total . ' (no Tax)</td></tr>';
     $message .= '<tr><td>Purchase Date:</td><td>' . $purchaseDate . ' EST</td></tr>';
     $message .= '</table>';
     $message .= '<br><strong>Shipping Address:</strong><br>';
@@ -36,7 +34,7 @@ function confirmPurchase($name, $toEmail, $productName, $productPrice, $quantity
     $message .= '</table>';
     $message .= '</div>';
     $message .= '</body></html>';
-    
+
     $headers = "From: $emailSender \r\n";
     $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
@@ -69,7 +67,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $availabilityRow = $availabilityResult->fetch_assoc();
     $availableQuantity = $availabilityRow["available"];
     $productName = $availabilityRow["name"];
-    $productPrice = $availabilityRow["price"];
+    $discount = $availabilityRow["discount"];
+    $discounted_price = $availabilityRow["price"] * (1 - ($discount / 100));
+    $productPrice = number_format($discounted_price, 2);
+
+
     $availabilityStmt->close();
 
     if ($availableQuantity == 0) {
@@ -82,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $reduceAvailabilityStmt->close();
 
         // Prepare and execute the SQL query to insert the purchase into the database
-        for($i=0; $i<$count; $i++){
+        for ($i = 0; $i < $count; $i++) {
             $stmt = $conn->prepare("INSERT INTO purchases (product_id, seller_id, name, email, address, state, country, postcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("iissssss", $product_id, $seller_id, $name, $email, $address, $state, $country, $postcode);
             $stmt->execute();
@@ -93,7 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo '<div class="purchase-success">';
         echo "<h1>Thank you for your purchase!</h1>";
         echo "<br>";
-        echo "<h4>An email with the receipt will be sent to you shortly.</h4>";
+        echo "<h4>An email receipt will be sent to you shortly.</h4>";
+        echo "<br>Please check you <strong>Spam folder</strong>.";
+        echo "<br>";
         echo "<br>";
         echo "Please note that we do not store any credit card information. <br>All credit card transactions are securely processed by a trusted <br>third-party payment processor.";
         echo "<br>";
@@ -101,8 +105,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<br>";
         echo '<a href="../index.php" class="back-btn">Back to Home</a>';
         echo '</div>';
-        confirmPurchase($name ,$email,$productName,$productPrice,$count,$productPrice*$count,$address,$state,$country,$postcode,$conn);
-    }    
+        confirmPurchase($name, $email, $productName, $productPrice, $count, $productPrice * $count, $address, $state, $country, $postcode, $conn);
+    }
 
     // Close the database connection
     $conn->close();

@@ -1,5 +1,6 @@
 <?php
-function InvalidUser(){
+function InvalidUser()
+{
     echo '<link rel="stylesheet" href="../styles.css">';
     echo '<div class="purchase-success">';
     echo "<h1>User exists!</h1>";
@@ -9,7 +10,8 @@ function InvalidUser(){
     echo '<a href="../index.php" class="back-btn">Back to Home</a>';
     echo '</div>';
 }
-function login($username, $password, $conn){
+function login($username, $password, $conn)
+{
     // Validate user credentials
     $sql = "SELECT * FROM users WHERE username = ?";
     $stmt = $conn->prepare($sql);
@@ -25,14 +27,13 @@ function login($username, $password, $conn){
         $_SESSION["username"] = $user["username"];
         header("Location: ../admin/admin_index.php");
         exit;
-    } 
- 
+    }
+
 }
 
 
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Include the database connection code
     require_once "../util/db_connection.php";
 
     // Get user inputs from the form
@@ -56,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Insert the new user into the database
             include "../users/add_user.php";
             include "../util/register_confirmation.php";
-            login($username,$password,$conn);
+            login($username, $password, $conn);
         }
     }
 

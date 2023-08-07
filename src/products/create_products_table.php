@@ -7,6 +7,8 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     price DECIMAL(10, 2) NOT NULL,
     description TEXT NOT NULL,
     image VARCHAR(255), 
+    cost_price DECIMAL(10, 2) NOT NULL DEFAULT 0,
+    discount DECIMAL(5, 2) NOT NULL DEFAULT 0,
     available INT(11) NOT NULL DEFAULT 0,
     sold INT(11) NOT NULL DEFAULT 0,
     shipped INT(11) NOT NULL DEFAULT 0,

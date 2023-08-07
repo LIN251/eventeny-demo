@@ -54,10 +54,16 @@
                 $product_description = $_POST['description'];
                 $product_return_policy = $_POST['return_policy'];
                 $product_image = $_POST['image'];
+                $product_discount = $_POST['discount'];
 
                 // Display the product information
                 echo '<h4>Product: ' . $product_name . '</h4>';
-                echo '<p>Price: $' . $product_price . '</p>';
+                if( $product_discount == 0){
+                    echo '<p>Price: $' . $product_price . '</p>';
+                } else {
+                    echo '<p>Price: $' . $product_price . ' <a class="discount">(After ' . $product_discount . '% Off)<a></p>';
+                }
+                // echo '<p>Price: $' . $product_price . ' <a class="discount">(After ' . $product_discount . '% Off)<a></p>';
                 echo '<p>Description: ' . $product_description . '</p>';
                 echo '<p>Available: ' . $available . '</p>';
                 echo '<p>Return Policy: ' . $product_return_policy . '</p>';

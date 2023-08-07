@@ -109,4 +109,12 @@ textarea {
 input[type="submit"] {
     width: 50%;
     height: 120%;
-  }
+}
+
+.earn-column {
+    color: red;
+}
+
+.marked-row {
+    background-color: #d0cccc;
+}

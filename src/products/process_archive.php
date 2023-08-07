@@ -1,10 +1,8 @@
 <?php
-
-
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["product_id"])) {
     // Connect to the database
     require_once "../util/db_connection.php";
-    
+
     // Check if the product_id is defined and not empty
     $product_id = $_POST["product_id"];
     $archive = $_POST["archive"];
@@ -20,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["product_id"])) {
         } else {
             echo "Failed to prepare the SQL statement.";
         }
-    } 
+    }
 
     $conn->close();
 }

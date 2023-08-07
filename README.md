@@ -8,38 +8,66 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 2. Update all required fields in the .env file.
 
-## Marketing Page
+## Key Features
 
 1. **Product Listings**: The marketing page displays all products currently available for sale from various admin users.
 
-2. **Seller Contact Information**: Each product listing includes the seller's email, making it easy for potential buyers to contact them directly. Purchases will be made as guests.
+2. **Admin Product Management**:
+   - Admin can create, read, update, and delete items/products in the system.
+   - Products can be added with details such as name, price, description, availability, and return policy.
 
-3. **Error Handling**: The application handles various purchase scenarios, such as preventing negative or zero purchase counts and detecting if the purchase quantity exceeds availability.
+3. **Admin Registration and Login**:
+   - Admin can register a new account with a unique username.
+   - Admin can securely log in to the system using their registered credentials.
 
-4. **Out of Stock Handling**: Products with zero availability are clearly marked as "Out of Stock" to inform buyers about their unavailability.
+4. **Guest Purchase**:
+   - Guests (non-registered users) can make purchases from the available products.
+   - Guests can provide their name, email, shipping address, and payment details during the purchase process.
 
-5. **Purchase Confirmation Email**: Buyers receive a confirmation email after completing a purchase, providing them with details of their order.
-    
-6. **Admin User Registration Email**: Upon successful registration, admin users receive a confirmation email welcoming them to the marketplace.
-    
-## Admin Page
+5. **Product Archive (Template)**:
+   - Archived products are no longer available for purchase.
+   - Archived products are kept for historical reference but are no longer displayed in the main product listing.
 
-1. **User-Specific Product List**: Upon logging in, each admin user has access to their own product list, where they can manage their product listings.
+6. **Discount Management**:
+   - Admin can apply discounts to specific products or categories.
+   - Discounts can be set as a percentage off base on the original price.
 
-2. **Product Management**: Admin users can easily edit product information, add new products, and archive products to maintain an organized product catalog.
+7. **Email Confirmation**:
+   - Users receive email confirmation upon successful registration.
+   - Customers receive email receipts after making a purchase.
+   - Automated emails are sent to users, but they end up in the **Spam folder**.
 
-3. **Sold Page**: Admin users have a dedicated page to manage their sold products. They can update the shipping status, which automatically updates the availability and sold count of the specific products.
+8. **Purchase Page**:
+   - Users can add products to their shopping cart for purchase.
 
-4. **Input Validation**: The application performs thorough validation to ensure that no empty values are allowed when adding or editing products.
+9. **Shipping Management**:
+   - Admin can manage shipping status.
 
-5. **Checkbox Locking**: Once a product is marked as shipped, the checkbox is locked to prevent accidental changes.
+10. **Private Archiving**:
+    - Archived products are hidden from the public product list, providing a clutter-free and user-friendly experience for potential buyers.
 
-6. **Archiving Products**: Instead of deletion, products can be archived for better organization and historical reference. The archive page shows all archived template, sellers can simplly edit them.
+11. **Earnings Tracking**:
+    - Admin can track earnings for each product sold.
+    - The system calculates earnings as the difference between the sell price and the product's cost price.
 
+12. **Seller Contact Information**:
+    - Each product listing includes the seller's email, making it easy for potential buyers to contact them directly.
+    - Purchases will be made as guests.
 
-7. **Private Archiving**: Archived products are hidden from the public product list, providing a clutter-free and user-friendly experience for potential buyers.
+13. **User-Specific Product List**:
+    - Upon logging in, each admin user has access to their own product list, where they can manage their product listings.
 
-8. **Multiple Rows for Purchases**: When multiple items are purchased in a single transaction, individual rows are displayed on the "Sold" page, maintaining a clear record of each sold item.
+14. **Out of Stock Handling**:
+    - Products with zero availability are clearly marked as "Out of Stock" to inform buyers about their unavailability.
+
+15. **Input Validation**:
+    - The application performs thorough validation to ensure that no empty values are allowed when adding or editing products.
+
+16. **Checkbox Locking**:
+    - Once a product is marked as shipped, the checkbox is locked to prevent accidental changes.
+
+17. **Multiple Rows for Purchases**:
+    - When multiple items are purchased in a single transaction, individual rows are displayed on the "Sold" page, maintaining a clear record of each sold item.
 
 
 
@@ -51,8 +79,8 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 2. **Fake Data for Testing**: For testing purposes, the database includes some pre-populated data, such as admin and test user accounts, as well as product listings.
 
-   - Admin Username: admin, Password: admin
-   - Test User Username: testuser, Password: testuser
+   - Admin Username: **admin**, Password: **admin**
+   - Test User Username: **testuser**, Password: **testuser**
    - Products: iPhone, iPad, MacBook, Apple TV, AirPods
 
 ---

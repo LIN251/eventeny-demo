@@ -20,13 +20,10 @@ $conn = new mysqli($servername, $username, $password);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// else{
-//     echo "Connected successfully to MySQL!" . "<br>";
-// }
 
 // Create the database if it doesn't exist
 $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-if (! $conn->query($sql) === true) {
+if (!$conn->query($sql) === true) {
     echo "Error creating database: " . $conn->error . "<br>";
 }
 

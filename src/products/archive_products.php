@@ -1,13 +1,18 @@
 <?php
 $user_id = $_SESSION["user_id"];
-// Fetch all products for current user from the 'product' table
+// Fetch all products for the current user from the 'product' table
 $sql = "SELECT * FROM products WHERE user_id = '$user_id' AND archive = 1";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     echo '<table class="product-table">';
-    echo '<tr><th>Name</th><th>Image</th><th>Description</th><th>Price</th><th>Available</th><th>Return Policy</th><th>Sold</th><th>Shipped</th><th>Edit</th><th>Back to Market</th><th>Delete</th></tr>';
+    echo '<tr><th>Name</th><th>Image</th><th>Description</th><th>Original Price($)</th><th>Discount<br>(0-100)%</th><th>Discounted Price($)</th><th>Product Cost($)</th><th>Available</th><th>Return Policy</th><th>Sold</th><th>Shipped</th><th>Edit</th><th>Back to Market</th><th>Delete</th></tr>';
     while ($row = $result->fetch_assoc()) {
+        // Calculate the discounted price
+        $discount = $row["discount"];
+        $discounted_price = $row["price"] * (1 - ($discount / 100));
+        $formatted_discounted_price = number_format($discounted_price, 2);
+
         echo '<tr data-id="' . $row["product_id"] . '">';
         echo '<td class="editable name">' . $row["name"] . '</td>';
         // Check if the image is empty
@@ -18,6 +23,9 @@ if ($result->num_rows > 0) {
         }
         echo '<td class="editable description">' . $row["description"] . '</td>';
         echo '<td class="editable price">$' . $row["price"] . '</td>';
+        echo '<td class="editable discount">' . $row["discount"] . '%</td>';
+        echo '<td class="sell_price" style="color: red;">$' . $formatted_discounted_price . '</td>';
+        echo '<td class="editable cost_price">$' . $row["cost_price"] . '</td>';
         echo '<td class="editable available">' . $row["available"] . '</td>';
         echo '<td class="editable return_policy">' . $row["return_policy"] . '</td>';
         echo '<td class="sold">' . $row["sold"] . '</td>';
@@ -37,6 +45,4 @@ if ($result->num_rows > 0) {
 } else {
     echo '<p>No products found.</p>';
 }
-
-
 ?>
