@@ -110,7 +110,4 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 ![Admin3](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin3.jpg)
 
-
-This README provides a brief overview of the key functionalities of the marketplace website. 
-
 Happy trading in the marketplace! 😊
