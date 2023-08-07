@@ -11,10 +11,10 @@ $servername = $_ENV['DB_HOST'];
 $username = $_ENV['DB_USERNAME'];
 $password = $_ENV['DB_PASSWORD'];
 $dbname = $_ENV['DB_NAME'];
-
+$dbport = $_ENV['DB_PORT'];
 
 // Create connection, use the default Mysql port 3306
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, null, $dbport);
 
 // Check connection
 if ($conn->connect_error) {
