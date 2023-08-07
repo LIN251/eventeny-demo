@@ -13,18 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $price = $_POST["price"];
     $available = $_POST["available"];
     $description = $_POST["description"];
-    $returns_policy = $_POST["returns_policy"];
+    $return_policy = $_POST["return_policy"];
 
     // Prepare the SQL statement to update the product record
     $sql = "UPDATE products 
-            SET name = ?, price = ?, available = ?, description = ?, returns_policy = ? 
+            SET name = ?, price = ?, available = ?, description = ?, return_policy = ? 
             WHERE product_id = ?";
 
     // Prepare the statement
     $stmt = $conn->prepare($sql);
 
     // Bind the parameters to the statement
-    $stmt->bind_param("sssssi", $name, $price, $available, $description, $returns_policy, $id);
+    $stmt->bind_param("sssssi", $name, $price, $available, $description, $return_policy, $id);
 
     // Execute the statement
     if ($stmt->execute()) {

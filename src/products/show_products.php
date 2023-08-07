@@ -33,7 +33,7 @@
         echo '<p>Price: $' . $row["price"] . '</p>';
         echo '<p >Description: ' . $row["description"] . '</p>';
         echo '<p>Available: ' . $row["available"] . '</p>';
-        echo '<p>Return Policy: ' . $row["returns_policy"] . '</p>';
+        echo '<p>Return Policy: ' . $row["return_policy"] . '</p>';
         echo '<p class="sellerInfo">Sell By: ' . $user_data["username"] . '</p>';
         echo '<p class="sellerInfo">Contact Info: <a href="mailto:' . $user_data["email"] . '">' . $user_data["email"] . '</a></p>';
         if ($row["available"] > 0) {
@@ -43,7 +43,7 @@
           echo '<input type="hidden" name="name" value="' . $row["name"] . '">';
           echo '<input type="hidden" name="price" value="' . $row["price"] . '">';
           echo '<input type="hidden" name="description" value="' . $row["description"] . '">';
-          echo '<input type="hidden" name="returns_policy" value="' . $row["returns_policy"] . '">';
+          echo '<input type="hidden" name="return_policy" value="' . $row["return_policy"] . '">';
           echo '<input type="hidden" name="image" value="' . $imageURL . '">';
           echo '<input type="submit" value="Purchase As Guest">';
           echo '</form>';

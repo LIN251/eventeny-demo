@@ -32,7 +32,7 @@ function addTestingDataForUsers($conn){
 
 // Function to add testing data for products
 function addTestingDataForProducts($conn) {
-    $sql = "INSERT INTO products (name, price, description, available, image, returns_policy, user_id,sold,shipped,archive) VALUES
+    $sql = "INSERT INTO products (name, price, description, available, image, return_policy, user_id,sold,shipped,archive) VALUES
     ('Iphone14', 999, 'This is iphone14', 1, 
     'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-card-40-iphone14pro-202209_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=1663611329204', 
     '30 days return policy', 1, 0, 0, 0),

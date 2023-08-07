@@ -52,7 +52,7 @@
                 $product_name = $_POST['name'];
                 $product_price = $_POST['price'];
                 $product_description = $_POST['description'];
-                $product_returns_policy = $_POST['returns_policy'];
+                $product_return_policy = $_POST['return_policy'];
                 $product_image = $_POST['image'];
 
                 // Display the product information
@@ -60,7 +60,7 @@
                 echo '<p>Price: $' . $product_price . '</p>';
                 echo '<p>Description: ' . $product_description . '</p>';
                 echo '<p>Available: ' . $available . '</p>';
-                echo '<p>Return Policy: ' . $product_returns_policy . '</p>';
+                echo '<p>Return Policy: ' . $product_return_policy . '</p>';
                 echo '<p>Image: </p>';
                 echo '<img src="' . $product_image . '" alt="Product Image" style="width: 140px;">';
                 ?>

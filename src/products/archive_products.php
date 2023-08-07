@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
         echo '<td class="editable description">' . $row["description"] . '</td>';
         echo '<td class="editable price">$' . $row["price"] . '</td>';
         echo '<td class="editable available">' . $row["available"] . '</td>';
-        echo '<td class="editable return_policy">' . $row["returns_policy"] . '</td>';
+        echo '<td class="editable return_policy">' . $row["return_policy"] . '</td>';
         echo '<td class="sold">' . $row["sold"] . '</td>';
         echo '<td class="shipped">' . $row["shipped"] . '</td>';
         echo '<td><button class="edit-btn" onclick="editProduct(' . $row["product_id"] . ')">Edit</button></td>';

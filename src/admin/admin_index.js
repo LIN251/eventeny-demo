@@ -39,11 +39,11 @@ function saveProduct(id) {
           price: tr.find('.price').find('input').val(),
           available: tr.find('.available').find('input').val(),
           description: tr.find('.description').find('input').val(),
-          returns_policy: tr.find('.return_policy').find('input').val()
+          return_policy: tr.find('.return_policy').find('input').val()
       };
 
      
-      if (!data.name || !data.price || !data.available || !data.description || !data.returns_policy) {
+      if (!data.name || !data.price || !data.available || !data.description || !data.return_policy) {
         alert("Error: Required field cannot be empty");
         return;
       }

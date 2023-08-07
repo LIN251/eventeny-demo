@@ -57,8 +57,8 @@ ini_set('display_errors', 1);
                 <label for="available">Available:</label>
                 <input type="number" name="available" required placeholder="Quantity Available (Required)">
 
-                <label for="returns_policy">Return Policy:</label>
-                <textarea name="returns_policy" placeholder="Return Policy (Required)"></textarea>
+                <label for="return_policy">Return Policy:</label>
+                <textarea name="return_policy" placeholder="Return Policy (Required)"></textarea>
                 <div class="center-container">
                     <input type="submit" value="Add Product">
                 </div>
