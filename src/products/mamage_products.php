@@ -12,7 +12,7 @@ if ($result->num_rows > 0) {
         echo '<td class="editable name">' . $row["name"] . '</td>';
         // Check if the image is empty
         if (!empty($row["image"])) {
-            echo '<td><img src="' . $row["image"] . '" alt="Product Image" style="max-width: 50%;"></td>';
+            echo '<td><img src="' . $row["image"] . '" alt="Product Image" style="width: 100%;"></td>';
         } else {
             echo '<td>No image provided</td>';
         }
@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
         echo '<td><button onclick="processArchive(' . $row["product_id"] . ', 1)">Archive</button></td>';
         // Check if sold is greater than shipped
         if ($row["sold"] > $row["shipped"]) {
-            echo '<td>You need to ship all sold items before deleting.</td>';
+            echo '<td>You need to <br> ship all sold <br>items before<br> deleting.</td>';
         } else {
             // Show delete button
             echo '<td><button onclick="deleteProduct(' . $row["product_id"] . ')">Delete</button></td>';

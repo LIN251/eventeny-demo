@@ -11,8 +11,8 @@
 
 <h1>Marketplace</h1>
 <button class="tablink" onclick="openTab('products')" id="defaultOpen">All Products</button>
-<button class="tablink" id= "guestLogin" onclick="openTab('login')">Login</button>
-<button class="tablink" onclick="openTab('register')">Register</button>
+<button class="tablink" id= "guestLogin" onclick="openTab('login')">Admin Login</button>
+<button class="tablink" onclick="openTab('register')">Admin Register</button>
 
 <?php 
     include "util/db_check.php"; 
@@ -31,7 +31,7 @@
 </div>
 
 <div id="login" class="tabcontent">
-    <h1>Login</h1>
+    <h1>Admin Login</h1>
     <form action="./login/login.php" method="post">
         <label for="username">Username:</label>
         <input type="text" name="username" required>
@@ -48,7 +48,7 @@
 
 
 <div id="register" class="tabcontent">
-    <h1>Register</h1>
+    <h1>Admin Register</h1>
     <form action="./login/register.php" method="post">
         <label for="username">Username:</label>
         <input type="text" name="username" required>

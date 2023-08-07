@@ -3,15 +3,29 @@
   $sql = "SELECT * FROM products WHERE archive = '0'";
   $result = $conn->query($sql);
 
+  function findUserName($user_id,$conn){
+    $usersql = "SELECT username FROM users WHERE user_id = '$user_id'";
+    $usernameresult = $conn->query($usersql);
+    $username = "";
+    if ($usernameresult->num_rows > 0) {
+      $userRow = $usernameresult->fetch_assoc();
+      $username = $userRow["username"];
+    }
+    return $username;
+  }
+
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $username = findUserName($row["user_id"],$conn);
         echo '<div class="product" id="'. $row["product_id"] . '">';
         echo '<div class="product-image">';
-        $imageURL = "https://via.placeholder.com/140";
+        $imageURL = "https://via.placeholder.com/100";
         if(!empty($row["image"])){
           $imageURL  =  $row["image"];
+          echo '<img src="' . $imageURL . '" alt="Product Image">';
+        }else{
+          echo '<p class="no-image">Seller did not provide<br> a product image.<p>';
         }
-        echo '<img src="' . $imageURL . '" alt="Product Image">';
         echo '</div>';
         echo '<div class="product-details">';
         echo '<h3> Product: ' . $row["name"] . '</h3>';
@@ -19,7 +33,7 @@
         echo '<p >Description: ' . $row["description"] . '</p>';
         echo '<p>Available: ' . $row["available"] . '</p>';
         echo '<p>Return Policy: ' . $row["returns_policy"] . '</p>';
-
+        echo '<p class="sellerInfo">Sell By: ' . $username . '</p>';
         if ($row["available"] > 0) {
           echo '<form action="./products/purchase_product.php" method="post">';
           echo '<input type="hidden" name="product_id" value="' . $row["product_id"] . '">';

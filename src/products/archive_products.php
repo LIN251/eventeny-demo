@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
         echo '<td><button class="copy-btn" onclick="processArchive(' . $row["product_id"] . ', 0)">Copy Back</button></td>';
         // Check if sold is greater than shipped
         if ($row["sold"] > $row["shipped"]) {
-            echo '<td>You need to ship all sold items before deleting.</td>';
+            echo '<td>You need to ship all sold items<br>before deleting.</td>';
         } else {
             // Show delete button
             echo '<td><button onclick="deleteProduct(' . $row["product_id"] . ')">Delete</button></td>';

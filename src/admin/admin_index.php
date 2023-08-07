@@ -43,22 +43,22 @@ ini_set('display_errors', 1);
             <h2>Add New Product</h2>
             <form action="../products/add_product.php" method="post">
                 <label for="name">Name:</label>
-                <input type="text" name="name" required placeholder="Product Name">
+                <input type="text" name="name" required placeholder="Product Name (Required)">
 
                 <label for="price">Price:</label>
-                <input type="number" name="price" step="0.01" required placeholder="Product Price">
+                <input type="number" name="price" step="0.01" required placeholder="Product Price  (Required)">
 
                 <label for="description">Description:</label>
-                <textarea name="description" required placeholder="Product Description"></textarea>
+                <textarea name="description" required placeholder="Product Description (Required)"></textarea>
 
                 <label for="image">Image URL:</label>
-                <input type="text" name="image" placeholder="One Image URL (optional)">
+                <input type="text" name="image" placeholder="One Image URL (Optional)">
 
                 <label for="available">Available:</label>
-                <input type="number" name="available" required placeholder="Quantity Available">
+                <input type="number" name="available" required placeholder="Quantity Available (Required)">
 
                 <label for="returns_policy">Return Policy:</label>
-                <textarea name="returns_policy" placeholder="Return Policy"></textarea>
+                <textarea name="returns_policy" placeholder="Return Policy (Required)"></textarea>
                 <div class="center-container">
                     <input type="submit" value="Add Product">
                 </div>
