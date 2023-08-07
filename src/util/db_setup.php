@@ -19,12 +19,12 @@ function checkTable($tableName, $conn) {
 function addTestingDataForUsers($conn){
     $passwordHash = password_hash("admin", PASSWORD_DEFAULT);
     $username = "admin";
-    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$passwordHash')";
+    $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$passwordHash', 'admin@gmail.com')";
     $conn->query($sql);
 
     $passwordHash = password_hash("testuser", PASSWORD_DEFAULT);
     $username = "testuser";
-    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$passwordHash')";
+    $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$passwordHash', 'lzhang2510@gmail.com')";
     $conn->query($sql);
 
 

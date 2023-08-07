@@ -15,7 +15,7 @@
 <button class="tablink" onclick="openTab('register')">Admin Register</button>
 
 <?php 
-    include "util/db_check.php"; 
+    include "util/db_setup.php"; 
 ?>
 <div id="products" class="tabcontent">
   <div class="show-products-container">
@@ -54,6 +54,9 @@
         <input type="text" name="username" required>
         <label for="password">Password:</label>
         <input type="password" name="password" required>
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+        <p>You will receive an email confirmation <br>once the account is created.</p>
         <input type="submit" value="Register" >
     </form>
 </div>

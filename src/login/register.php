@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Get user inputs from the form
     $username = $_POST["username"];
     $password = $_POST["password"];
-
+    $email = $_POST["email"];
     // Hash the password for security
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             // Insert the new user into the database
             include "../users/add_user.php";
+            include "../util/register_confirmation.php";
             login($username,$password,$conn);
         }
     }

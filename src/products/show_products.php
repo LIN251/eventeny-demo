@@ -3,20 +3,21 @@
   $sql = "SELECT * FROM products WHERE archive = '0'";
   $result = $conn->query($sql);
 
-  function findUserName($user_id,$conn){
-    $usersql = "SELECT username FROM users WHERE user_id = '$user_id'";
+  function findUserData($user_id,$conn){
+    $usersql = "SELECT * FROM users WHERE user_id = '$user_id'";
     $usernameresult = $conn->query($usersql);
-    $username = "";
+    $user_data = array("username" => "", "email" => "");
     if ($usernameresult->num_rows > 0) {
       $userRow = $usernameresult->fetch_assoc();
-      $username = $userRow["username"];
+      $user_data["username"] = $userRow["username"];
+      $user_data["email"] = $userRow["email"];
     }
-    return $username;
+    return $user_data;
   }
 
   if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        $username = findUserName($row["user_id"],$conn);
+        $user_data = findUserData($row["user_id"],$conn);
         echo '<div class="product" id="'. $row["product_id"] . '">';
         echo '<div class="product-image">';
         $imageURL = "https://via.placeholder.com/100";
@@ -33,7 +34,8 @@
         echo '<p >Description: ' . $row["description"] . '</p>';
         echo '<p>Available: ' . $row["available"] . '</p>';
         echo '<p>Return Policy: ' . $row["returns_policy"] . '</p>';
-        echo '<p class="sellerInfo">Sell By: ' . $username . '</p>';
+        echo '<p class="sellerInfo">Sell By: ' . $user_data["username"] . '</p>';
+        echo '<p class="sellerInfo">Contact Info: <a href="mailto:' . $user_data["email"] . '">' . $user_data["email"] . '</a></p>';
         if ($row["available"] > 0) {
           echo '<form action="./products/purchase_product.php" method="post">';
           echo '<input type="hidden" name="product_id" value="' . $row["product_id"] . '">';
