@@ -8,6 +8,10 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 2. Update all required fields in the .env file.
 
+3. Run `$composer install` to install all packages.
+   
+4. Entry (suppose using localhost): http://localhost/eventeny-demo/src/index.php
+   
 ---
 
 ## Key Features
