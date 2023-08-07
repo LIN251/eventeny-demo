@@ -92,7 +92,7 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 ---
 
-## Marketplace Image
+## Marketplace Screenshots
 ![marketplace1](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/marketplace1.jpg)
 
 ![Marketplace2](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/marketplace2.jpg)
@@ -103,7 +103,7 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 ![Marketplace4](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/marketplace5.jpg)
 
-## Admin Image
+## Admin Screenshots
 ![Admin1](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin1.jpg)
 
 ![Admin2](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin2.jpg)
