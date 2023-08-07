@@ -8,9 +8,12 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 2. Update all required fields in the .env file.
 
+---
+
 ## Key Features
 
-1. **Product Listings**: The marketing page displays all products currently available for sale from various admin users.
+1. **Product Listings**: 
+   - The marketing page displays all products currently available for sale from various admin users.
 
 2. **Admin Product Management**:
    - Admin can create, read, update, and delete items/products in the system.
@@ -40,7 +43,7 @@ This is a simple marketplace website where users can buy and sell products. Belo
 8. **Purchase Page**:
    - Users can add products to their shopping cart for purchase.
 
-9. **Shipping Management**:
+9.  **Shipping Management**:
    - Admin can manage shipping status.
 
 10. **Private Archiving**:
@@ -69,11 +72,11 @@ This is a simple marketplace website where users can buy and sell products. Belo
 17. **Multiple Rows for Purchases**:
     - When multiple items are purchased in a single transaction, individual rows are displayed on the "Sold" page, maintaining a clear record of each sold item.
 
-
+---
 
 ## Database Schema
 
-![Database Schema](https://drive.google.com/file/d/1k6Ck5Lm6OiELjyU245184QfQR-awwaW5/view?usp=drive_link)
+![Database Schema](https://github.com/LIN251/eventeny-demo/tree/main/img/DemoDatabaseSchema.png)
 
 1. **Automatic Table Creation**: The application automatically creates necessary SQL tables (users, products, purchases) if they do not already exist.
 
@@ -85,24 +88,23 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 ---
 
+## Marketplace Image
+![marketplace1](https://github.com/LIN251/eventeny-demo/tree/main/img/marketplace1.jpg)
+
+![Marketplace2](https://github.com/LIN251/eventeny-demo/tree/main/img/marketplace2.jpg)
+
+![Marketplace3](https://github.com/LIN251/eventeny-demo/tree/main/img/img/marketplace3.jpg)
+
+![Marketplace4](https://github.com/LIN251/eventeny-demo/tree/main/img/img/marketplace4.jpg)
+
+## Admin Image
+![Admin1](https://github.com/LIN251/eventeny-demo/tree/main/img/img/admin1.jpg)
+
+![Admin2](https://github.com/LIN251/eventeny-demo/tree/main/img/img/admin2.jpg)
+
+![Admin3](https://github.com/LIN251/eventeny-demo/tree/main/img/img/admin3.jpg)
+
+
 This README provides a brief overview of the key functionalities of the marketplace website. 
 
 Happy trading in the marketplace! 😊
-
-## Marketplace Image
-![marketplace1](https://drive.google.com/file/d/16EHJI7ietZYV4P5w44O6vWt2RyeuNlUb/view?usp=drive_link)
-
-![Marketplace2](https://drive.google.com/file/d/1qGHxo9XkenXrIhSQitNAEb_WUbGHqlRF/view?usp=drive_link)
-
-![Marketplace3](https://drive.google.com/file/d/16ooXzhHZ-PQXACYSjA_uKob2k7SoQ9WW/view?usp=drive_link)
-
-![Marketplace4](https://drive.google.com/file/d/1_1Cwlm56TybJTBmoDU_xmaw1LaS1Tspl/view?usp=drive_link)
-
-## Admin Image
-![Admin1](https://drive.google.com/file/d/18j5EpnzcYFlsZZgd5L5SZpCVtIp8dXAA/view?usp=sharing)
-
-![Admin2](https://drive.google.com/file/d/1bkf4ZGqb9EJYuyUZZuXZ9vX02p_NLtq6/view?usp=sharing)
-
-![Admin3](https://drive.google.com/file/d/15YAhyiQgAiNaxz6mP3aTBOYdrEoYyQnu/view?usp=sharing)
-
-
