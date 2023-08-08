@@ -24,7 +24,7 @@ if (!isset($_SESSION["user_id"])) {
     </h1>
     <button class="tablink" onclick="openTab('manage')" id="defaultOpen">Manage products</button>
     <button class="tablink" onclick="openTab('sold')" id="soldTab">Sold Products</button>
-    <button class="tablink" onclick="openTab('archive')">Archived Templates</button>
+    <button class="tablink" onclick="openTab('archive')" id="archiveTab">Archived Templates</button>
     <button class="tablink" onclick="logout()">Log Out</button>
 
 

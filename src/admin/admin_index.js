@@ -16,8 +16,6 @@ function logout() {
   window.location.href = "../login/logout.php";
 }
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
 
 // Function to convert table cell to input field for editing
 function editProduct(id) {
@@ -176,3 +174,28 @@ function handleCheckboxClick(checkbox, purchase_id) {
     checkbox.checked = false;
   }
 }
+
+// Function to save the current active tab to local storage
+function saveActiveTab(tabName) {
+  localStorage.setItem('activeTab', tabName);
+}
+
+// Function to load the saved active tab from local storage and open it
+function loadActiveTab() {
+  const activeTab = localStorage.getItem('activeTab');
+  if (activeTab) {
+    document.getElementById(activeTab).click();
+  } else {
+    document.getElementById('defaultOpen').click();
+  }
+}
+
+// Add an event listener to save the active tab when a tab is clicked
+document.querySelectorAll('.tablink').forEach(tab => {
+  tab.addEventListener('click', function() {
+    saveActiveTab(this.id);
+  });
+});
+
+// Load the active tab when the page is fully loaded
+window.addEventListener('load', loadActiveTab);
