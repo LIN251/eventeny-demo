@@ -40,9 +40,9 @@
         </form>
 
         <!-- Add a Register button that redirects to the registration page -->
-        <form action="./login/register.php">
+        <!-- <form action="./login/register.php">
             <input type="submit" value="Register">
-        </form>
+        </form> -->
     </div>
 
     <div id="register" class="tabcontent">
