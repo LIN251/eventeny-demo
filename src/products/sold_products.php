@@ -21,7 +21,7 @@ if ($result_sold->num_rows > 0) {
         } else {
             echo '<tr purchase_id="' . $sold_row["purchase_id"] . '">';
         }
-        echo '<td>' . $sold_row["product_name"] . '</td>';
+        echo '<td>' . $sold_row["execution_product_name"] . '</td>';
         echo '<td>$' . $sold_row["execution_description"] . '</td>';
         echo '<td>' . $sold_row["execution_discount"] . '%</td>';
         echo '<td>$' . $sold_row["execution_price"] . '</td>';
