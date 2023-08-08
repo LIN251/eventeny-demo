@@ -80,7 +80,7 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 ## Database Schema
 
-![Database Schema](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/DemoDatabaseSchema.png)
+![Database Schema](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/Demo-Database-Schema.png)
 
 1. **Automatic Table Creation**: The application automatically creates necessary SQL tables (users, products, purchases) if they do not already exist.
 

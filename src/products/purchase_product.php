@@ -8,7 +8,6 @@
         function changeCount(change) {
             let countInput = document.getElementById("count");
             let availableInput = document.getElementById("available");
-
             let count = parseInt(countInput.value);
             let available = parseInt(availableInput.value);
             change = parseInt(change);
@@ -17,7 +16,7 @@
             // Ensure the new count is within the available quantity limits
             if (newCount >= 1 && newCount <= available) {
                 countInput.value = newCount;
-            } else if (newCount > available){
+            } else if (newCount > available) {
                 alert(`Invalid count. Only ${available} available.`);
             } else {
                 alert(`Count can not be zero or negative.`);
@@ -28,11 +27,11 @@
         function validateForm(available) {
             let countInput = document.getElementById("count");
             let count = parseInt(countInput.value);
-         
+
             // Check if the count is a valid positive integer
             if (count <= 0 || !Number.isInteger(count) || count > available) {
                 alert(`Invalid count. Only ${available} available.`);
-                return false; 
+                return false;
             }
             return true;
         }
@@ -44,7 +43,8 @@
 <body>
     <div class="form-container">
         <h1 class="form-title">Shopping Cart</h1>
-        <form action="process_purchase.php" method="post" onsubmit="return validateForm(<?php echo $_POST['available']; ?>)">
+        <form action="process_purchase.php" method="post"
+            onsubmit="return validateForm(<?php echo $_POST['available']; ?>)">
             <h3>Product Information</h3>
             <div class="form-group">
                 <?php
@@ -58,7 +58,7 @@
 
                 // Display the product information
                 echo '<h4>Product: ' . $product_name . '</h4>';
-                if( $product_discount == 0){
+                if ($product_discount == 0) {
                     echo '<p>Price: $' . $product_price . '</p>';
                 } else {
                     echo '<p>Price: $' . $product_price . ' <a class="discount">(After ' . $product_discount . '% Off)<a></p>';
@@ -116,7 +116,6 @@
                 <label for="cvv">CVV:</label>
                 <input type="text" name="cvv" required>
             </div>
-
             <input type="hidden" id="available" value="<?php echo $_POST['available']; ?>">
             <input type="hidden" name="product_id" value="<?php echo $_POST['product_id']; ?>">
             <input type="hidden" name="user_id" value="<?php echo $_POST['user_id']; ?>">

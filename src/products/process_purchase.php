@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../../vendor/autoload.php';
 use Dotenv\Dotenv;
 
-
 function confirmPurchase($name, $toEmail, $productName, $productPrice, $quantity, $total, $address, $state, $country, $postcode, $conn)
 {
     // Load the environment variables from the .env file
@@ -42,7 +41,6 @@ function confirmPurchase($name, $toEmail, $productName, $productPrice, $quantity
     mail($toEmail, $subject, $message, $headers);
 }
 
-
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Include the database connection code
@@ -58,20 +56,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $postcode = $_POST["postcode"];
     $count = $_POST["count"];
 
-
-    // Check the availability of the product
+    // Check the availability of the product and get current product information.
     $availabilityStmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
     $availabilityStmt->bind_param("i", $product_id);
     $availabilityStmt->execute();
     $availabilityResult = $availabilityStmt->get_result();
     $availabilityRow = $availabilityResult->fetch_assoc();
+    $product_name = $availabilityRow["name"];
     $availableQuantity = $availabilityRow["available"];
-    $productName = $availabilityRow["name"];
-    $discount = $availabilityRow["discount"];
-    $discounted_price = $availabilityRow["price"] * (1 - ($discount / 100));
-    $productPrice = number_format($discounted_price, 2);
-
-
+    $cost_price = $availabilityRow["cost_price"];
+    $description = $availabilityRow["description"];
+    $product_discount = $availabilityRow["discount"];
+    // Calculate the discounted price
+    $discounted_price = $availabilityRow["price"] * (1 - ($product_discount / 100));
+    $product_price = number_format($discounted_price, 2);
     $availabilityStmt->close();
 
     if ($availableQuantity == 0) {
@@ -85,8 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Prepare and execute the SQL query to insert the purchase into the database
         for ($i = 0; $i < $count; $i++) {
-            $stmt = $conn->prepare("INSERT INTO purchases (product_id, seller_id, name, email, address, state, country, postcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("iissssss", $product_id, $seller_id, $name, $email, $address, $state, $country, $postcode);
+            $stmt = $conn->prepare("INSERT INTO purchases (seller_id, name, email, address, state, country, postcode, execution_description, execution_discount, execution_price, execution_cost_price ,execution_product_name) VALUES (?, ?, ?, ?, ?, ?, ?,?,?,?,?,?)");
+            $stmt->bind_param("isssssssiiis", $seller_id, $name, $email, $address, $state, $country, $postcode, $description, $product_discount, $product_price, $cost_price, $product_name);
             $stmt->execute();
             $stmt->close();
         }
@@ -105,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<br>";
         echo '<a href="../index.php" class="back-btn">Back to Home</a>';
         echo '</div>';
-        confirmPurchase($name, $email, $productName, $productPrice, $count, $productPrice * $count, $address, $state, $country, $postcode, $conn);
+        confirmPurchase($name, $email, $product_name, $product_price, $count, $product_price * $count, $address, $state, $country, $postcode, $conn);
     }
 
     // Close the database connection
