@@ -90,9 +90,9 @@ This is a simple marketplace website where users can buy and sell products. Belo
    - Test User Username: **testuser**, Password: **testuser**
    - Products: iPhone, iPad, MacBook, Apple TV, AirPods
 
-2. **Fake Data for Testing**: 
-   
-   - One image per product (Optional).
+3. **Image**: 
+
+   - Link only one image per product (Optional).
    
 ---
 
