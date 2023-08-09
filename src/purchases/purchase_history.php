@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
         echo '<td class="created_at">' . $row["created_at"] . '</td>';
         echo '<td class="updated_at">' . $row["updated_at"] . '</td>';
         if ( $row["shipped"] == 1) {
-            echo '<td>Item already shipped.</td>';
+            echo '<td>Item already shipped</td>';
         } else {
             echo '<td><button onclick="cancelPurchase(' . $row["purchase_id"] . ')">Request</button></td>';
         }
