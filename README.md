@@ -76,6 +76,14 @@ This is a simple marketplace website where users can buy and sell products. Belo
 17. **Multiple Rows for Purchases**:
     - When multiple items are purchased in a single transaction, individual rows are displayed on the "Sold" page, maintaining a clear record of each sold item.
 
+18. **Order History**
+
+19. **User vs Guest Purchase**
+
+20. **Cancel Order**
+
+21. **Personalized Product List** 
+    
 ---
 
 ## Database Schema
