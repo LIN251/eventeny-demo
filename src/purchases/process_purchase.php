@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo '<a href="../index.php" class="back-btn">Back to Home</a>';
         }
  
-        $total = floatval($product_price) * $count;
+        $total = floatval($execution_price) * $count;
         confirmPurchase($name, $email, $product_name, $product_price, $count, $total, $address, $state, $country, $postcode, $conn);
     }
 
