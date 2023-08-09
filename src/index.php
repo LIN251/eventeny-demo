@@ -11,9 +11,10 @@
 <body>
     <h1>Marketplace</h1>
     <button class="tablink" onclick="openTab('products')" id="defaultOpen">All Products</button>
-    <button class="tablink" id="guestLogin" onclick="openTab('login')">Admin Login</button>
-    <button class="tablink" onclick="openTab('register')">Admin Register</button>
+    <button class="tablink" id="defaultOpen" onclick="openTab('login')">User Login</button>
+    <button class="tablink" id="guestregister" onclick="openTab('register')">User Register</button>
     <?php
+
     include "util/db_setup.php";
     ?>
     <div id="products" class="tabcontent">
