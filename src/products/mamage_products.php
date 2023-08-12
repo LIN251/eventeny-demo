@@ -4,11 +4,13 @@ $result = findAllArchivedProductsForUser($conn, $_SESSION["user_id"], 0);
 
 if ($result->num_rows > 0) {
     echo '<table class="product-table table">';
-    echo '<tr><th>Name</th><th>Image</th><th>Description</th><th>Original Price($)</th><th>Discount<br>(0-100)%</th><th>Discounted price($)</th><th>Product Cost($)</th><th>Available</th><th>Return Policy</th><th>Sold</th><th>Shipped</th><th>Edit</th><th>Archive</th><th>Delete</th></tr>';
+    echo '<tr><th>Name</th><th>Image</th><th>Description</th><th>Original Price($)</th>
+    <th>Discount<br>(0-100)%</th><th>Discounted price($)</th><th>Product Cost($)</th>
+    <th>Available</th><th>Return Policy</th><th>Sales</th><th>Edit</th>
+    <th>Archive</th><th>Delete</th></tr>';
     while ($row = $result->fetch_assoc()) {
         // Calculate the discounted price
         $formatted_discounted_price = calculateDiscountedPrice($row["price"], $row["discount"]);
-
         echo '<tr data-id="' . $row["product_id"] . '">';
         echo '<td class="editable name">' . $row["name"] . '</td>';
         if (!empty($row["image"])) {
@@ -23,16 +25,18 @@ if ($result->num_rows > 0) {
         echo '<td class="editable cost_price">$' . $row["cost_price"] . '</td>';
         echo '<td class="editable available">' . $row["available"] . '</td>';
         echo '<td class="editable return_policy">' . $row["return_policy"] . '</td>';
-        echo '<td class="sold">' . $row["sold"] . '</td>';
-        echo '<td class="shipped">' . $row["shipped"] . '</td>';
-        echo '<td><button class="edit-btn" onclick="editProduct(' . $row["product_id"] . ')">Edit</button></td>';
-        echo '<td><button onclick="processArchive(' . $row["product_id"] . ', 1)">Archive</button></td>';
+        echo '<td class="sold">
+        <strong>Sold</strong>   : ' . $row["sold"] . '<br>
+        <strong>Shipped</strong>: ' . $row["shipped"] . '
+        </td>';
+        echo '<td><button class="edit-btn button" onclick="editProduct(' . $row["product_id"] . ')">Edit</button></td>';
+        echo '<td><button class="button" onclick="processArchive(' . $row["product_id"] . ', 1)">Archive</button></td>';
         // Check if sold is greater than shipped
         if ($row["sold"] > $row["shipped"]) {
             echo '<td>You need to <br> ship all sold <br>items before<br> deleting.</td>';
         } else {
             // Show delete button
-            echo '<td><button onclick="deleteProduct(' . $row["product_id"] . ')">Delete</button></td>';
+            echo '<td><button class="button" onclick="deleteProduct(' . $row["product_id"] . ')">Delete</button></td>';
         }
         echo '</tr>';
     }

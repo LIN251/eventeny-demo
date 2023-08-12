@@ -67,10 +67,20 @@ function findAllArchivedProductsForUser($conn, $user_id, $archive)
     return $conn->query($sql);
 }
 
-function findReviewByPurchaseId($conn, $purchase_id){
+function findReviewByPurchaseId($conn, $purchase_id)
+{
     $sql = "SELECT * FROM product_reviews WHERE purchase_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $purchase_id);
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
+function findPriceHistoryByProductId($conn, $product_id)
+{
+    $sql = "SELECT * FROM price_history WHERE product_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $product_id);
     $stmt->execute();
     return $stmt->get_result();
 }
@@ -126,7 +136,8 @@ function insertIntoPurchasesForGuestUser($conn, $seller_id, $name, $email, $addr
     $stmt->close();
 }
 
-function insertIntoProductReviews( $conn, $purchase_id, $user_id, $review_text, $rating){
+function insertIntoProductReviews($conn, $purchase_id, $user_id, $review_text, $rating)
+{
     $sql = "INSERT INTO product_reviews (purchase_id, user_id, review_text, rating) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("iisi", $purchase_id, $user_id, $review_text, $rating);
@@ -153,6 +164,14 @@ function deletePurchase($conn, $purchase_id)
     $deletePurchaseStmt->close();
 }
 
+function insertIntoPriceHistory($conn, $product_id, $price)
+{
+    $sql = "INSERT INTO price_history (product_id, price) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("id", $product_id, $price);
+    $stmt->execute();
+    $stmt->close();
+}
 
 //UPDATE
 function updateProduct($conn, $id, $name, $price, $available, $description, $return_policy, $cost_price, $discount)
@@ -214,7 +233,8 @@ function updateProductSoldAndAvailableForPurchase($conn, $product_id, $count)
     $updateProductStmt->close();
 }
 
-function updateReviewSubmitted( $conn, $purchase_id){
+function updateReviewSubmitted($conn, $purchase_id)
+{
     $sql = "UPDATE purchases SET review_submitted = 1 WHERE purchase_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $purchase_id);

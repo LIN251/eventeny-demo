@@ -92,7 +92,7 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 ## Database Schema
 
-![Database Schema](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/DemoDatabaseSchemaV3.png)
+![Database Schema](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/DemoDatabaseSchemaV4.png)
 
 1. **Automatic Table Creation**: The application automatically creates necessary SQL tables (users, products, purchases) if they do not already exist.
 
@@ -128,6 +128,10 @@ This is a simple marketplace website where users can buy and sell products. Belo
 
 ![Admin4](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin4.jpg)
 
-![Admin5](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin5.jpg)
+![Admin6](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin6.jpg)
+
+![Admin7](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin7.jpg)
+
+![Admin9](https://raw.githubusercontent.com/LIN251/eventeny-demo/master/img/admin9.jpg)
 
 Happy trading in the marketplace! 😊

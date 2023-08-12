@@ -63,4 +63,24 @@ function purchase_email_confirmation($name, $toEmail, $productName, $productPric
     mail($toEmail, $subject, $message, $headers);
 }
 
+function contact_us_confirmation( $nameFB, $emailFB, $subjectFB, $messageFB)
+{
+    global $emailSender;
+    // Email content
+    $subject = "Feed Back Email";
+    $message = '<html><body>';
+    $message .= '<div style="font-family: Arial, sans-serif; font-size: 16px;">';
+    $message .= "Feed Back from <strong> $nameFB </strong> <br><br>Email: <strong>$emailFB</strong> <br><br>Subject: <strong>$subjectFB</strong> <br><br> Message: <strong>$messageFB</strong> .<br><br>";
+    $message .= '</div>';
+    $message .= '</body></html>';
+
+    $headers = "From: $emailFB \r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+    // Send the email
+    mail($emailSender, $subject, $message, $headers);
+}
+
+
+
 ?>

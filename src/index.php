@@ -4,15 +4,35 @@
 <head>
     <title>Marketplace</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.27.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@0.1.1"></script>
+  
     <script src="index.js" defer></script>
+    <header>
+    <h1>Marketplace</h1>
+    <nav>
+        <ul class="navbar">
+            <li class="nav-item">
+                <a class="nav-link tablink" href="#" onclick="openTab('products')" id="defaultOpen">All Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link tablink" href="#" onclick="openTab('login')" id="loginTab">Sign In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link tablink" href="#" onclick="openTab('register')" id="registerTab">Sign Up</a>
+            </li>
+        </ul>
+    </nav>
+    </header>
 </head>
 
 
 <body>
-    <h1>Marketplace</h1>
-    <button class="tablink" onclick="openTab('products')" id="defaultOpen">All Products</button>
+
+    <!-- <button class="tablink" onclick="openTab('products')" id="defaultOpen">All Products</button>
     <button class="tablink" id="defaultOpen" onclick="openTab('login')">User Login</button>
-    <button class="tablink" id="guestregister" onclick="openTab('register')">User Register</button>
+    <button class="tablink" id="guestregister" onclick="openTab('register')">User Register</button> -->
     <?php
     include "util/db_setup.php";
     ?>
@@ -30,7 +50,7 @@
     </div>
 
     <div id="login" class="tabcontent">
-        <h1>Admin Login</h1>
+        <h1 class="form-title">Admin Login</h1>
         <form action="./login/login.php" method="post">
             <label for="username">Username:</label>
             <input type="text" name="username" required>
@@ -46,7 +66,7 @@
     </div>
 
     <div id="register" class="tabcontent">
-        <h1>Admin Register</h1>
+        <h1 class="form-title">Admin Register</h1>
         <form action="./login/register.php" method="post">
             <label for="username">Username:</label>
             <input type="text" name="username" required>
@@ -60,4 +80,5 @@
     </div>
 
 </body>
+
 </html>

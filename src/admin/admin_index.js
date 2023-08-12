@@ -16,7 +16,6 @@ function logout() {
   window.location.href = "../login/logout.php";
 }
 
-
 // Function to convert table cell to input field for editing
 function editProduct(id) {
   const tr = $(`tr[data-id="${id}"]`);
@@ -78,9 +77,13 @@ function saveProduct(id) {
     alert("Invalid discount. Discount must be a number between 0 and 100.");
     return;
   }
-  console.log(data,id);
+
   $.post(`../products/update_product.php?id=${id}`, data, function (response) {
-    console.log(response);
+    var discountedPrice = data.price * (1 - data.discount / 100);
+    var formattedPrice = discountedPrice.toFixed(2);
+    var final_price = parseFloat(formattedPrice.replace(",", ""));
+    var sellPriceCell = tr.find(".sell_price");
+    sellPriceCell.text("$" + final_price);
     tr.find(".editable").each(function () {
       const input = $(this).find("input");
       const value = input.val();
@@ -96,15 +99,19 @@ function saveProduct(id) {
         input.val("$" + value);
       }
 
-      if (isDiscount && value && value.endsWith("%")) {
-        input.val(value.slice(0, -1));
+      if (isDiscount && value) {
+        if (!value.endsWith("%")) {
+          input.val(value + "%");
+        } else {
+          input.val(value);
+        }
       }
 
       $(this).html(input.val());
     });
     tr.find(".edit-btn").text("Edit").attr("onclick", `editProduct(${id})`);
   }).done(function () {
-    // location.reload();
+    location.reload();
   });
 }
 
@@ -178,22 +185,22 @@ function handleCheckboxClick(checkbox, purchase_id) {
 
 // Function to save the current active tab to local storage
 function saveActiveTab(tabName) {
-  localStorage.setItem('activeTab', tabName);
+  localStorage.setItem("activeTab", tabName);
 }
 
 // Function to load the saved active tab from local storage and open it
 function loadActiveTab() {
-  const activeTab = localStorage.getItem('activeTab');
+  const activeTab = localStorage.getItem("activeTab");
   if (activeTab) {
     document.getElementById(activeTab).click();
   } else {
-    document.getElementById('defaultOpen').click();
+    document.getElementById("defaultOpen").click();
   }
 }
 
 // Add an event listener to save the active tab when a tab is clicked
-document.querySelectorAll('.tablink').forEach(tab => {
-  tab.addEventListener('click', function() {
+document.querySelectorAll(".tablink").forEach((tab) => {
+  tab.addEventListener("click", function () {
     saveActiveTab(this.id);
   });
 });
@@ -219,10 +226,108 @@ function cancelPurchase(purchase_id) {
 }
 
 // Show the review form
-function showReviewForm(purchaseId){
+function showReviewForm(purchaseId) {
   document.getElementById("reviewFormContainer").style.display = "block";
   document.getElementById("purchaseId").value = purchaseId;
 }
 
 // Load the active tab when the page is fully loaded
-window.addEventListener('load', loadActiveTab);
+window.addEventListener("load", loadActiveTab);
+
+document.addEventListener("DOMContentLoaded", function () {
+  var priceHistoryButtons = document.querySelectorAll(".price-history-button");
+  var modal = document.getElementById("modal");
+  var chart; // Declare the chart variable
+
+  priceHistoryButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      var productId = this.getAttribute("data-product-id");
+
+      // Show modal
+      modal.style.display = "block";
+
+      // Destroy the previous chart if it exists
+      if (chart) {
+        chart.destroy();
+      }
+
+      // Fetch and display price history chart
+      fetchPriceHistory(productId);
+    });
+  });
+
+  function fetchPriceHistory(productId) {
+    fetch("../price/price_history.php?product_id=" + productId)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        // Process the fetched data and create the Chart.js chart
+        chart = createPriceHistoryChart(data);
+      })
+      .catch(function (error) {
+        console.error("Error fetching price history:", error);
+      });
+  }
+
+  function createPriceHistoryChart(priceHistoryData) {
+    var dates = priceHistoryData.map(function (entry) {
+      return moment(entry.created_at, "YYYY-MM-DD HH:mm:ss").toDate();
+    });
+
+    var prices = priceHistoryData.map(function (entry) {
+      return entry.price;
+    });
+
+    var ctx = document.getElementById("priceHistoryChart").getContext("2d");
+
+    var newChart = new Chart(ctx, {
+      // Create a new Chart.js chart object
+      type: "line",
+      data: {
+        labels: dates,
+        datasets: [
+          {
+            label: "Price History",
+            data: prices,
+            borderColor: "rgba(75, 192, 192, 1)",
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            type: "time",
+            time: {
+              unit: "day",
+              tooltipFormat: "MMM D", // Format for tooltip display
+              displayFormats: {
+                day: "MMM D",
+              },
+            },
+            title: {
+              display: true,
+              text: "Date",
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: "Price ($)",
+            },
+          },
+        },
+      },
+    });
+
+    return newChart; // Return the newly created chart
+  }
+});
+
+function closeModal() {
+  var modal = document.getElementById("modal");
+  modal.style.display = "none";
+}

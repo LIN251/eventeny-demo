@@ -15,6 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     include "../util/db_operations.php";
     updateProduct($conn, $id, $name, $price, $available, $description, $return_policy, $cost_price, $discount);
+    include "../util/util_functions.php";
+    $discounted_price = calculateDiscountedPrice($price, $discount);
+    insertIntoPriceHistory($conn, $id, $discounted_price);
+
 }
 $conn->close();
 ?>

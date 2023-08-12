@@ -7,10 +7,84 @@ body {
 h1, h2{
     text-align: center;
     margin-bottom: 20px;
-    color: #10bab4;
+    color: rgb(7, 80, 77);
 }
 
 
+header {
+  background-image: linear-gradient(to bottom right, #0c8581, #19faf2);
+  color: #fff;
+  padding: 15px 0;
+  text-align: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #ffcc00;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  flex-grow: 1; 
+  position: relative;
+  text-align: center; 
+}
+
+/* Dropdown styles */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #00b7c2;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 200px;
+  border-radius: 4px;
+  transform: translateY(5px);
+}
+
+.nav-item:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-block {
+    padding: 10px 15px;
+    text-align: left;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: block;
+    cursor: pointer;
+    border-bottom: 1px solid #0077b5;
+}
+
+.dropdown-block:last-child {
+    border-bottom: none;
+}
+
+.dropdown-label {
+    color: #ccc;
+    font-size: 12px;
+}
+
+.dropdown-block:hover {
+    background-color: #0077b5;
+}
+
+/* Style the tab */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -25,18 +99,6 @@ h1, h2{
 }
 
 /* Style the tab */
-.tablink {
-    background-color: #555;
-    color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    font-size: 17px;
-    width: 16.66%;
-  }
-
 .tablink:hover {
     background-color: #777;
 }
@@ -311,3 +373,63 @@ input[type="submit"] {
     color: red;
   }
 
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 90%; /* Set a maximum width for the modal content */
+    max-height: 90%; /* Set a maximum height for the modal content */
+    overflow: auto; /* Add scrollbars if content overflows */
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+.price-history-button {
+  margin-top: 10px;
+  padding: 10px 20px; 
+  background-color: #10bab4; 
+  color: #ffffff; /* Set text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+.price-history-button:hover {
+  background-color: #0c928e; 
+  color: #fff; 
+}
+
+
+.button{
+  background-color: #10bab4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  height: 40px;
+}

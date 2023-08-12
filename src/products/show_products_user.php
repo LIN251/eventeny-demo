@@ -54,6 +54,18 @@ if ($result->num_rows > 0) {
     echo '<p>Return Policy: ' . $row["return_policy"] . '</p>';
     echo '<p class="sellerInfo">Seller: ' . $user_data["username"] . '</p>';
     echo '<p class="sellerInfo">Contact Info: <a href="mailto:' . $user_data["email"] . '">' . $user_data["email"] . '</a></p>';
+    echo '<button class="price-history-button" data-product-id="' . $row["product_id"] . '">Price History</button><br>';
+
+    echo "<div id='modal' class='modal'>";
+    echo "<div class='modal-content'>";
+    echo "<span class='close-icon' onclick='closeModal()'>&times;</span>";
+    echo '<canvas id="priceHistoryChart" style="width: 180%; height: 180%;"></canvas>';
+    echo "</div>";
+    echo "</div>";
+
+
+
+
     if ($row["available"] > 0) {
       echo '<form action="../products/purchase_product.php" method="post">';
       echo '<input type="hidden" name="product_id" value="' . $row["product_id"] . '">';
@@ -67,10 +79,10 @@ if ($result->num_rows > 0) {
       echo '<input type="hidden" name="buyer_id" value="' . $buyer_id . '">';
       echo '<input type="hidden" name="discount" value="' . $discount . '">';
       echo '<div class="purchase-button-container">';
-      echo '<input type="submit" id="purchase" value="Purchase">';
+      echo '<input type="submit" id="purchase" style="padding: 10px 20px; width: 118px; " value="Purchase">';
       echo '</div>';
     } else {
-      echo '<input style="background-color: grey;" type="submit" value="Out of Stock" disabled>';
+      echo '<input style="background-color: grey; margin-top: 20px; padding: 5px 20px; width: 118px; height: 35px;" type="submit" value="Out of Stock" disabled>';
 
     }
     echo '</form>';

@@ -52,10 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         echo '<link rel="stylesheet" href="../styles.css">';
         echo '<div class="purchase-success">';
-        echo "<h1>Thank you for your purchase!</h1>";
+        echo "<h1 class='form-title'>Thank you for your purchase!</h1>";
         echo "<br>";
         echo "<h4>An email receipt will be sent to you shortly.</h4>";
-        echo "<br>Please check you <strong>Spam folder</strong>.";
+        echo "<br>Please check your <strong>Spam folder</strong>.";
         echo "<br>";
         echo "<br>";
         echo "Please note that we do not store any credit card information. <br>All credit card transactions are securely processed by a trusted <br>third-party payment processor.";
