@@ -1,4 +1,4 @@
-function openTab(tabName) {
+function openTab(curTabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -8,11 +8,12 @@ function openTab(tabName) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].style.backgroundColor = "";
   }
-  document.getElementById(tabName).style.display = "block";
-  document.querySelector("[onclick=\"openTab('" + tabName + "')\"]");
+  document.getElementById(curTabName).style.display = "block";
+  // document.querySelector("[onclick=\"openTab('" + curTabName + "')\"]");
 }
 
 function logout() {
+  localStorage.setItem("activeTab", "defaultOpen");;
   window.location.href = "../login/logout.php";
 }
 
@@ -191,10 +192,14 @@ function saveActiveTab(tabName) {
 // Function to load the saved active tab from local storage and open it
 function loadActiveTab() {
   const activeTab = localStorage.getItem("activeTab");
-  if (activeTab) {
-    document.getElementById(activeTab).click();
-  } else {
+  if(activeTab === "loginTab" || activeTab === "registerTab"){
     document.getElementById("defaultOpen").click();
+  }else{
+    if (activeTab) {
+      document.getElementById(activeTab).click();
+    } else {
+      document.getElementById("defaultOpen").click();
+    }
   }
 }
 

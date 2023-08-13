@@ -3,7 +3,7 @@ function InvalidUserLogin()
 {
     echo '<link rel="stylesheet" href="../styles.css">';
     echo '<div class="purchase-success">';
-    echo "<h1>User not found!</h1>";
+    echo "<h1 class='form-title'>User not found!</h1>";
     echo "<br>";
     echo "username or password incorrect!";
     echo "<br>";
@@ -16,7 +16,7 @@ function InvalidUserRegister()
 {
     echo '<link rel="stylesheet" href="../styles.css">';
     echo '<div class="purchase-success">';
-    echo "<h1>User exists!</h1>";
+    echo "<h1 class='form-title'>User exists!</h1>";
     echo "<br>";
     echo "Username already exists. Please choose a different username.";
     echo "<br>";

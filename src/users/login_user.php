@@ -8,6 +8,9 @@ function login($username, $password, $conn)
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user["password"])) {
+            echo '<script>';
+            echo 'localStorage.setItem("activeTab", "defaultOpen");'; 
+            echo '</script>';
             // Login successful, set session variable
             $_SESSION["user_id"] = $user["user_id"];
             $_SESSION["username"] = $user["username"];

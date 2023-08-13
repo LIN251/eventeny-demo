@@ -115,7 +115,12 @@ if (!isset($_SESSION["user_id"])) {
             ?>
 
         </div>
-
+        <!-- Contact us tab -->
+        <div id="contact" class="tabcontent">
+            <?php
+            include "../util/contact_us_form.php";
+            ?>
+        </div>
         <!-- Sold products tab -->
         <div id="sold" class="tabcontent">
             <h1 class="form-title">Shipments</h1>
@@ -141,21 +146,6 @@ if (!isset($_SESSION["user_id"])) {
         </div>
 
 
-        <!-- Earn from sells tab -->
-        <div id="review" class="tabcontent">
-            <h1 class="form-title">Product Reviews</h1>
-            <?php
-            include "../products/product_reviews.php";
-            ?>
-        </div>
-
-
-        <!-- Contact us tab -->
-        <div id="contact" class="tabcontent">
-            <?php
-            include "../util/contact_us_form.php";
-            ?>
-        </div>
     </main>
 </body>
 
