@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     contact_us_confirmation($name, $email, $subject, $message);
     echo '<link rel="stylesheet" href="../styles.css">';
     echo '<div class="purchase-success">';
-    echo "<h1>Feedback sent!</h1>";
+    echo "<h1 class='form-title'>Feedback sent!</h1>";
     echo "<br>";
     echo "Thank you for your feedback!";
     echo "<br>";

@@ -50,7 +50,7 @@
     </div>
 
     <div id="login" class="tabcontent">
-        <h1 class="form-title">Admin Login</h1>
+        <h1 class="form-title">Sign In</h1>
         <form action="./login/login.php" method="post">
             <label for="username">Username:</label>
             <input type="text" name="username" required>
@@ -66,7 +66,7 @@
     </div>
 
     <div id="register" class="tabcontent">
-        <h1 class="form-title">Admin Register</h1>
+        <h1 class="form-title">Sign Up</h1>
         <form action="./login/register.php" method="post">
             <label for="username">Username:</label>
             <input type="text" name="username" required>
